@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>- MINURISPENANGGAL | High-End Editorial Botanicals</title>
+    
+    <!-- Google Fonts: Anton & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: '#01472e',
+                        sage: '#ccd5ae',
+                        olive: '#e9edc9',
+                        cream: '#fefae0',
+                        moss: '#a3b18a',
+                    },
+                    fontFamily: {
+                        display: ['Anton', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2.5rem',
+                        '5xl': '5rem',
+                    },
+                    boxShadow: {
+                        'editorial': '0 25px 50px -12px rgba(1, 71, 46, 0.2)',
+                        'editorial-lg': '0 35px 60px -15px rgba(1, 71, 46, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base typography defaults */
+        body {
+            background-color: #ccd5ae;
+            color: #01472e;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero Text Specific Fluid Sizing */
+        .hero-display-text {
+            font-size: clamp(4.5rem, 21vw, 24rem);
+            line-height: 0.78;
+            letter-spacing: -0.04em;
+        }
+
+        .section-display-text {
+            font-size: clamp(3.5rem, 14vw, 15rem);
+            line-height: 0.82;
+            letter-spacing: -0.03em;
+        }
+
+        /* SVG Noise Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+        }
+
+        /* Premium Smooth Motion Signature */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(80px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delays for typography/letters */
+        .stagger-letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(60px) rotate(4deg);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .stagger-letter.active {
+            opacity: 1;
+            transform: translateY(0) rotate(0deg);
+        }
+
+        /* Floating Parallax Keyframe */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .animate-float-slow {
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float 9s ease-in-out infinite 2s;
+        }
+
+        .animate-float-fast {
+            animation: float 6s ease-in-out infinite 1s;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ccd5ae;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #01472e;
+            border-radius: 4px;
+        }
+
+        /* Custom glass backdrop */
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-card {
+            background: rgba(254, 250, 224, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(1, 71, 46, 0.08);
+        }
+
+        /* Card Hover Blur Reveal Overlay */
+        .card-blur-overlay {
+            background: rgba(1, 71, 46, 0.35);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card:hover .card-blur-overlay {
+            opacity: 1;
+        }
+
+        .product-card:hover .quick-add-btn {
+            transform: translateY(0);
+        }
+
+        .quick-add-btn {
+            transform: translateY(32px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Custom underline input */
+        .underline-input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #ccd5ae;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .underline-input:focus {
+            border-bottom-color: #fefae0;
+        }
+    </style>
+</head>
+<body class="relative bg-sage text-forest antialiased selection:bg-forest selection:text-cream">
+
+    <!-- Fixed Noise Texture Overlay -->
+    <div class="noise-overlay" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <filter id="noiseFilter">
+                <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/>
+            </filter>
+            <rect width="100%" height="100%" filter="url(#noiseFilter)"/>
+        </svg>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-5 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="font-bold text-lg md:text-xl tracking-[0.25em] uppercase text-forest hover:opacity-80 transition-opacity flex items-center gap-1">
+                <span>-</span> MI NURIS PENANGGAL
+            </a>
+
+            <!-- Nav Links (Pill) -->
+            <nav class="hidden md:flex items-center gap-1 glass-pill rounded-full px-6 py-2.5 shadow-editorial">
+                <a href="#hero" class="text-[10px] font-bold uppercase tracking-[0.3em] text-forest hover:text-opacity-60 px-3 py-1 transition-colors">Beranda</a>
+                <a href="#products" class="text-[10px] font-bold uppercase tracking-[0.3em] text-forest hover:text-opacity-60 px-3 py-1 transition-colors">Profil</a>
+                <a href="#philosophy" class="text-[10px] font-bold uppercase tracking-[0.3em] text-forest hover:text-opacity-60 px-3 py-1 transition-colors">Galeri</a>
+                <a href="#journal" class="text-[10px] font-bold uppercase tracking-[0.3em] text-forest hover:text-opacity-60 px-3 py-1 transition-colors">Berita</a>
+            </nav>
+
+            <!-- Actions Right -->
+            <div class="flex items-center gap-3">
+                <button id="search-toggle" aria-label="Toggle search" class="glass-pill w-11 h-11 rounded-full flex items-center justify-center text-forest hover:bg-white hover:bg-opacity-40 transition-all">
+                    <i data-lucide="search" class="w-4 h-4"></i>
+                </button>
+                <button id="cart-toggle" class="glass-pill px-4 py-2.5 rounded-full flex items-center gap-3 text-forest font-bold text-[10px] tracking-[0.25em] uppercase hover:bg-white hover:bg-opacity-50 transition-all shadow-editorial">
+                    <span>Bag</span>
+                    <span id="cart-count" class="bg-cream text-forest w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-extrabold shadow-sm">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen bg-sage flex flex-col justify-between pt-28 pb-12 px-4 md:px-12 overflow-hidden">
+        
+        <!-- Background Organic Shape Canvas / Decorative circles -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-olive/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <!-- Floating Organic Cards Surround Hero -->
+        <!-- Card 1: Top Left -->
+        <div class="parallax-floating absolute top-24 left-4 md:left-16 z-20 w-36 md:w-56 animate-float-slow hidden sm:block" data-speed="-0.04">
+            <div class="rounded-4xl overflow-hidden shadow-editorial border-2 border-cream/50 bg-cream/30 p-2 backdrop-blur-sm transform -rotate-6 transition-transform hover:scale-105 duration-500">
+                <img src="images/Upacara.jpeg" 
+                     alt="Wild Rosemary Oil" 
+                     class="w-full h-40 md:h-42 object-contain rounded-[2rem]"
+                     onerror="this.src='https://placehold.co/400x500/01472e/ccd5ae?text=Botanical+Oil'">
+                <div class="p-2.5 text-center">
+                    <span class="block text-[9px] font-bold uppercase tracking-[0.25em] text-forest/70">MASA SIH</span>
+                    <span class="block text-xs font-bold uppercase tracking-[0.15em] text-forest">GAMAU SEKOLAH SINI?</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Top Right Floating Herb -->
+        <div class="parallax-floating absolute top-32 right-6 md:right-20 z-20 w-40 md:w-64 animate-float-delayed hidden sm:block" data-speed="0.06">
+            <div class="rounded-4xl overflow-hidden shadow-editorial border-2 border-cream/50 bg-cream/30 p-2 backdrop-blur-sm transform rotate-6 transition-transform hover:scale-105 duration-500">
+                <img src="images/Guru.png" 
+                     alt="Raw Botanical Ingredients" 
+                     class="w-full h-52 md:h-40 object-contain scale-125 rounded-[2rem]"
+                     onerror="this.src='https://placehold.co/400x600/01472e/e9edc9?text=Earthy+Roots'">
+                <div class="p-2.5 text-center">
+                    <span class="block text-[9px] font-bold uppercase tracking-[0.25em] text-forest/70">POTRAIT GURU</span>
+                    <span class="block text-xs font-bold uppercase tracking-[0.15em] text-forest">MI NURIS PENANGGAL</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Center Display Text -->
+        <div class="my-auto text-center relative z-10 py-12 md:py-20 select-none">
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full border border-forest/20 text-[10px] font-bold uppercase tracking-[0.35em] text-forest/80 bg-sage/50 backdrop-blur-sm">
+                Madrasah Hebat Bermartabat
+            </div>
+            
+            <h1 id="hero-title" class="hero-display-text font-display font-normal text-forest uppercase tracking-tighter transition-all" aria-label="MINURIS">
+                <!-- Staggered animated letters JS will populate or wrap -->
+                <span class="stagger-letter">M</span><span class="stagger-letter">I</span><span class="stagger-letter">N</span><span class="stagger-letter">U</span><span class="stagger-letter">R</span><span class="stagger-letter">I</span><span class="stagger-letter">S</span>
+            </h1>
+
+            <p class="mt-6 max-w-lg mx-auto text-sm md:text-base font-normal text-forest/80 px-4 leading-relaxed tracking-wide">
+                Membentuk Generasi Islami, Berprestasi, dan Berakhlakul Karimah.
+            </p>
+        </div>
+
+        <!-- Floating Bottom Card 3 Center-Right -->
+        <div class="parallax-floating absolute bottom-28 left-1/2 transform -translate-x-1/2 md:translate-x-[220px] z-20 w-32 md:w-48 animate-float-fast hidden md:block" data-speed="-0.03">
+            <div class="rounded-4xl overflow-hidden shadow-editorial bg-forest text-cream p-3 transform rotate-3 hover:rotate-0 transition-all duration-500">
+                <div class="flex items-center justify-between text-[8px] tracking-[0.2em] font-bold uppercase mb-2 text-sage">
+                    <span>Formula</span>
+                    <span>100% Pure</span>
+                </div>
+                <div class="text-xs font-bold tracking-widest uppercase mb-1"></div>
+                <div class="text-[9px] text-moss uppercase tracking-wider">Lihat Selengkapnya</div>
+            </div>
+        </div>
+
+        <!-- Hero Footer Dual-Column Details -->
+        <div class="reveal-element z-10 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 pt-8 border-t border-forest/15">
+            <div class="flex items-center gap-4">
+                <span class="w-2 h-2 rounded-full bg-forest animate-pulse"></span>
+                <div class="text-[11px] font-bold uppercase tracking-[0.25em] text-forest">
+                    EST. 2026 / PROVENANCE: VALENCIA, SPAIN
+                </div>
+            </div>
+            <div class="flex justify-start md:justify-end items-center gap-8 text-[11px] font-bold uppercase tracking-[0.25em] text-forest/80">
+                <span class="cursor-pointer hover:text-forest transition-colors flex items-center gap-2">
+                    <i data-lucide="leaf" class="w-3.5 h-3.5"></i> ORGANIC CERTIFIED
+                </span>
+                <span class="cursor-pointer hover:text-forest transition-colors flex items-center gap-2">
+                    <i data-lucide="droplet" class="w-3.5 h-3.5"></i> COLD EXTRACTED
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Grid Section -->
+    <section id="products" class="relative bg-olive rounded-t-5xl -mt-16 pt-24 pb-32 px-4 md:px-12 z-30 shadow-2xl transition-all">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Section Header -->
+            <div class="reveal-element flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+                <div>
+                    <span class="text-[11px] font-bold uppercase tracking-[0.35em] text-forest/70 block mb-3">
+                        Curated Formulations
+                    </span>
+                    <h2 class="section-display-text font-display uppercase text-forest leading-none">
+                        ARI GANTENG
+                    </h2>
+                </div>
+
+                <!-- Circular CTA Button -->
+                <div class="flex items-center gap-6">
+                    <div class="hidden lg:block text-right max-w-xs text-xs font-medium text-forest/70 leading-relaxed">
+                        Discover cold-pressed botanicals crafted for skin resilience and architectural elegance.
+                    </div>
+                    <a href="#philosophy" class="group relative w-28 h-28 md:w-36 md:h-36 rounded-full bg-forest text-cream flex flex-col items-center justify-center p-4 transition-transform duration-500 hover:scale-105 shadow-editorial">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 md:w-8 md:h-8 mb-1 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+                        <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.25em] text-center">EXPLORE ALL</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="reveal-element flex flex-wrap gap-3 mb-12 border-b border-forest/10 pb-6">
+                <button class="filter-btn active px-6 py-2.5 rounded-full bg-forest text-cream text-[10px] font-bold uppercase tracking-[0.25em] transition-all" data-category="all">
+                    All Formulations
+                </button>
+                <button class="filter-btn px-6 py-2.5 rounded-full bg-cream/60 hover:bg-forest hover:text-cream text-forest text-[10px] font-bold uppercase tracking-[0.25em] transition-all" data-category="serums">
+                    Concentrated Serums
+                </button>
+                <button class="filter-btn px-6 py-2.5 rounded-full bg-cream/60 hover:bg-forest hover:text-cream text-forest text-[10px] font-bold uppercase tracking-[0.25em] transition-all" data-category="oils">
+                    Nourishing Oils
+                </button>
+                <button class="filter-btn px-6 py-2.5 rounded-full bg-cream/60 hover:bg-forest hover:text-cream text-forest text-[10px] font-bold uppercase tracking-[0.25em] transition-all" data-category="balms">
+                    Restorative Balms
+                </button>
+            </div>
+
+            <!-- Product Cards Grid (3 Columns) -->
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                
+                <!-- Product Card 1 -->
+                <div class="product-card reveal-element group relative bg-cream/40 rounded-4xl p-4 overflow-hidden border border-forest/10 transition-all duration-500 hover:shadow-editorial" data-category="oils" data-id="1" data-name="Forest Nectar Facial Oil" data-price="94" data-img="https://images.unsplash.com/photo-1608248597263-0057e54b4b24?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative aspect-[4/5] rounded-[2rem] overflow-hidden mb-5 bg-sage/30">
+                        <img src="https://images.unsplash.com/photo-1608248597263-0057e54b4b24?auto=format&fit=crop&w=800&q=80" 
+                             alt="Forest Nectar Oil" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x750/01472e/ccd5ae?text=Forest+Nectar'">
+                        
+                        <span class="absolute top-4 left-4 bg-cream/90 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-extrabold uppercase tracking-[0.2em] text-forest">
+                            BESTSELLER
+                        </span>
+
+                        <!-- Blur Reveal Hover Button Container -->
+                        <div class="card-blur-overlay absolute inset-0 flex items-end justify-center p-6">
+                            <button class="quick-add-btn w-full py-4 bg-cream text-forest text-[11px] font-bold uppercase tracking-[0.3em] rounded-full shadow-lg hover:bg-forest hover:text-cream transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="plus" class="w-4 h-4"></i> Quick Add — $94
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="px-2 pb-2">
+                        <div class="flex items-baseline justify-between mb-2">
+                            <h3 class="font-bold text-lg uppercase tracking-wider text-forest group-hover:text-opacity-80 transition-opacity">
+                                Forest Nectar Oil
+                            </h3>
+                            <span class="font-extrabold text-sm text-forest">$94</span>
+                        </div>
+                        <p class="text-xs text-forest/70 font-normal line-clamp-2 leading-relaxed mb-4">
+                            Infused with wild pine bark, squalane, and organic sea buckthorn for intense lipid restoration.
+                        </p>
+                        <div class="flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.2em] text-forest/60 pt-3 border-t border-forest/10">
+                            <span>30 ML / 1.0 FL. OZ</span>
+                            <span class="text-moss font-extrabold">IN STOCK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card reveal-element group relative bg-cream/40 rounded-4xl p-4 overflow-hidden border border-forest/10 transition-all duration-500 hover:shadow-editorial" data-category="serums" data-id="2" data-name="Sage Leaf Cellular Concentrate" data-price="118" data-img="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative aspect-[4/5] rounded-[2rem] overflow-hidden mb-5 bg-sage/30">
+                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80" 
+                             alt="Sage Leaf Serum" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x750/01472e/e9edc9?text=Sage+Serum'">
+                        
+                        <span class="absolute top-4 left-4 bg-cream/90 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-extrabold uppercase tracking-[0.2em] text-forest">
+                            NEW
+                        </span>
+
+                        <!-- Blur Reveal Hover Button Container -->
+                        <div class="card-blur-overlay absolute inset-0 flex items-end justify-center p-6">
+                            <button class="quick-add-btn w-full py-4 bg-cream text-forest text-[11px] font-bold uppercase tracking-[0.3em] rounded-full shadow-lg hover:bg-forest hover:text-cream transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="plus" class="w-4 h-4"></i> Quick Add — $118
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="px-2 pb-2">
+                        <div class="flex items-baseline justify-between mb-2">
+                            <h3 class="font-bold text-lg uppercase tracking-wider text-forest group-hover:text-opacity-80 transition-opacity">
+                                Sage Leaf Serum
+                            </h3>
+                            <span class="font-extrabold text-sm text-forest">$118</span>
+                        </div>
+                        <p class="text-xs text-forest/70 font-normal line-clamp-2 leading-relaxed mb-4">
+                            High-potency botanical niacinamide blended with fermented sage hydrosol for luminous clarity.
+                        </p>
+                        <div class="flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.2em] text-forest/60 pt-3 border-t border-forest/10">
+                            <span>50 ML / 1.7 FL. OZ</span>
+                            <span class="text-moss font-extrabold">LIMITED RELEASE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card reveal-element group relative bg-cream/40 rounded-4xl p-4 overflow-hidden border border-forest/10 transition-all duration-500 hover:shadow-editorial" data-category="balms" data-id="3" data-name="Moss Botanical Barrier Balm" data-price="82" data-img="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative aspect-[4/5] rounded-[2rem] overflow-hidden mb-5 bg-sage/30">
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80" 
+                             alt="Moss Barrier Balm" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x750/01472e/a3b18a?text=Barrier+Balm'">
+
+                        <!-- Blur Reveal Hover Button Container -->
+                        <div class="card-blur-overlay absolute inset-0 flex items-end justify-center p-6">
+                            <button class="quick-add-btn w-full py-4 bg-cream text-forest text-[11px] font-bold uppercase tracking-[0.3em] rounded-full shadow-lg hover:bg-forest hover:text-cream transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="plus" class="w-4 h-4"></i> Quick Add — $82
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="px-2 pb-2">
+                        <div class="flex items-baseline justify-between mb-2">
+                            <h3 class="font-bold text-lg uppercase tracking-wider text-forest group-hover:text-opacity-80 transition-opacity">
+                                Moss Barrier Balm
+                            </h3>
+                            <span class="font-extrabold text-sm text-forest">$82</span>
+                        </div>
+                        <p class="text-xs text-forest/70 font-normal line-clamp-2 leading-relaxed mb-4">
+                            Velvety moisture shield made with wild moss extracts, cupuaçu butter, and cold-pressed jojoba.
+                        </p>
+                        <div class="flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.2em] text-forest/60 pt-3 border-t border-forest/10">
+                            <span>60 ML / 2.0 FL. OZ</span>
+                            <span class="text-moss font-extrabold">IN STOCK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card reveal-element group relative bg-cream/40 rounded-4xl p-4 overflow-hidden border border-forest/10 transition-all duration-500 hover:shadow-editorial" data-category="serums" data-id="4" data-name="Olive Stem Cell Renewal Compound" data-price="135" data-img="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative aspect-[4/5] rounded-[2rem] overflow-hidden mb-5 bg-sage/30">
+                        <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=80" 
+                             alt="Olive Stem Cell" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x750/01472e/fefae0?text=Stem+Cell+Compound'">
+
+                        <!-- Blur Reveal Hover Button Container -->
+                        <div class="card-blur-overlay absolute inset-0 flex items-end justify-center p-6">
+                            <button class="quick-add-btn w-full py-4 bg-cream text-forest text-[11px] font-bold uppercase tracking-[0.3em] rounded-full shadow-lg hover:bg-forest hover:text-cream transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="plus" class="w-4 h-4"></i> Quick Add — $135
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="px-2 pb-2">
+                        <div class="flex items-baseline justify-between mb-2">
+                            <h3 class="font-bold text-lg uppercase tracking-wider text-forest group-hover:text-opacity-80 transition-opacity">
+                                Olive Stem Compound
+                            </h3>
+                            <span class="font-extrabold text-sm text-forest">$135</span>
+                        </div>
+                        <p class="text-xs text-forest/70 font-normal line-clamp-2 leading-relaxed mb-4">
+                            Bio-fermented active compounds extracted from century-old Mediterranean olive groves.
+                        </p>
+                        <div class="flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.2em] text-forest/60 pt-3 border-t border-forest/10">
+                            <span>30 ML / 1.0 FL. OZ</span>
+                            <span class="text-moss font-extrabold">IN STOCK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card reveal-element group relative bg-cream/40 rounded-4xl p-4 overflow-hidden border border-forest/10 transition-all duration-500 hover:shadow-editorial" data-category="oils" data-id="5" data-name="Vapour Cypress Night Infusion" data-price="88" data-img="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative aspect-[4/5] rounded-[2rem] overflow-hidden mb-5 bg-sage/30">
+                        <img src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=800&q=80" 
+                             alt="Vapour Cypress Oil" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x750/01472e/ccd5ae?text=Cypress+Infusion'">
+
+                        <!-- Blur Reveal Hover Button Container -->
+                        <div class="card-blur-overlay absolute inset-0 flex items-end justify-center p-6">
+                            <button class="quick-add-btn w-full py-4 bg-cream text-forest text-[11px] font-bold uppercase tracking-[0.3em] rounded-full shadow-lg hover:bg-forest hover:text-cream transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="plus" class="w-4 h-4"></i> Quick Add — $88
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="px-2 pb-2">
+                        <div class="flex items-baseline justify-between mb-2">
+                            <h3 class="font-bold text-lg uppercase tracking-wider text-forest group-hover:text-opacity-80 transition-opacity">
+                                Cypress Night Oil
+                            </h3>
+                            <span class="font-extrabold text-sm text-forest">$88</span>
+                        </div>
+                        <p class="text-xs text-forest/70 font-normal line-clamp-2 leading-relaxed mb-4">
+                            Overnight cellular recovery formula centered around Tuscan blue cypress and evening primrose.
+                        </p>
+                        <div class="flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.2em] text-forest/60 pt-3 border-t border-forest/10">
+                            <span>45 ML / 1.5 FL. OZ</span>
+                            <span class="text-moss font-extrabold">IN STOCK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card reveal-element group relative bg-cream/40 rounded-4xl p-4 overflow-hidden border border-forest/10 transition-all duration-500 hover:shadow-editorial" data-category="balms" data-id="6" data-name="Earthy Clay Purifying Mask" data-price="76" data-img="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative aspect-[4/5] rounded-[2rem] overflow-hidden mb-5 bg-sage/30">
+                        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=800&q=80" 
+                             alt="Earthy Clay Mask" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                             onerror="this.src='https://placehold.co/600x750/01472e/e9edc9?text=Clay+Purifier'">
+
+                        <!-- Blur Reveal Hover Button Container -->
+                        <div class="card-blur-overlay absolute inset-0 flex items-end justify-center p-6">
+                            <button class="quick-add-btn w-full py-4 bg-cream text-forest text-[11px] font-bold uppercase tracking-[0.3em] rounded-full shadow-lg hover:bg-forest hover:text-cream transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="plus" class="w-4 h-4"></i> Quick Add — $76
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="px-2 pb-2">
+                        <div class="flex items-baseline justify-between mb-2">
+                            <h3 class="font-bold text-lg uppercase tracking-wider text-forest group-hover:text-opacity-80 transition-opacity">
+                                Clay Purifier Balm
+                            </h3>
+                            <span class="font-extrabold text-sm text-forest">$76</span>
+                        </div>
+                        <p class="text-xs text-forest/70 font-normal line-clamp-2 leading-relaxed mb-4">
+                            Glacial French green clay blended with wild kelp and grounding cedar extract.
+                        </p>
+                        <div class="flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.2em] text-forest/60 pt-3 border-t border-forest/10">
+                            <span>100 ML / 3.4 FL. OZ</span>
+                            <span class="text-moss font-extrabold">IN STOCK</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Craft & Philosophy Section -->
+    <section id="philosophy" class="relative bg-cream rounded-t-5xl -mt-16 pt-28 pb-32 px-4 md:px-12 z-40 text-forest">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Editorial Text -->
+                <div class="lg:col-span-7 reveal-element">
+                    <span class="text-[11px] font-bold uppercase tracking-[0.35em] text-forest/60 block mb-4">
+                        Philosophical Integrity
+                    </span>
+                    <h2 class="font-display text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.88] tracking-tight mb-8">
+                        SLOW BOTANICAL ARCHITECTURE
+                    </h2>
+                    
+                    <div class="space-y-6 text-sm md:text-base font-normal text-forest/80 leading-relaxed max-w-2xl">
+                        <p>
+                            We believe skincare is a structural dialogue between human biology and the raw geometry of nature. Every formula is micro-batched inside our Mediterranean sanctuary, using unrefined cold-pressed botanicals sourced directly from small-hold regenerative farms.
+                        </p>
+                        <p>
+                            No synthetic fillers, no artificial fragrances—only high-density botanical lipids designed to restore the skin’s natural lipid barrier while offering a sensory anchor to the earth.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Stats -->
+                    <div class="grid grid-cols-3 gap-6 pt-10 mt-10 border-t border-forest/15">
+                        <div>
+                            <span class="block font-display text-4xl md:text-5xl text-forest mb-1">100%</span>
+                            <span class="text-[9px] font-bold uppercase tracking-[0.25em] text-forest/70">Organic Sourcing</span>
+                        </div>
+                        <div>
+                            <span class="block font-display text-4xl md:text-5xl text-forest mb-1">0%</span>
+                            <span class="text-[9px] font-bold uppercase tracking-[0.25em] text-forest/70">Synthetic Fillers</span>
+                        </div>
+                        <div>
+                            <span class="block font-display text-4xl md:text-5xl text-forest mb-1">N°01</span>
+                            <span class="text-[9px] font-bold uppercase tracking-[0.25em] text-forest/70">Cold Extracted</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Feature Graphic with Extreme Rounding -->
+                <div class="lg:col-span-5 reveal-element">
+                    <div class="relative">
+                        <div class="rounded-5xl overflow-hidden shadow-editorial border-4 border-sage/40 bg-sage">
+                            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1000&q=80" 
+                                 alt="Botanical Craftsmanship" 
+                                 class="w-full h-[520px] object-cover hover:scale-105 transition-transform duration-700"
+                                 onerror="this.src='https://placehold.co/800x1000/01472e/fefae0?text=Craftsmanship'">
+                        </div>
+
+                        <!-- Floating Floating Element Overlay -->
+                        <div class="absolute -bottom-8 -left-6 bg-forest text-cream p-6 rounded-4xl shadow-editorial max-w-xs animate-float-slow hidden sm:block">
+                            <i data-lucide="quote" class="w-6 h-6 text-sage mb-2"></i>
+                            <p class="text-xs italic leading-relaxed text-sage">
+                                "A quiet revolution in botanical purity. Elegance stripped down to pure organic potency."
+                            </p>
+                            <span class="block text-[9px] font-bold uppercase tracking-[0.2em] text-moss mt-3">— Editorial Review</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Editorial Journal Highlights -->
+    <section id="journal" class="bg-sage pt-24 pb-28 px-4 md:px-12 rounded-t-5xl -mt-16 z-40 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="reveal-element flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-[11px] font-bold uppercase tracking-[0.35em] text-forest/70 block mb-3">
+                        Volume 04 / Editorial
+                    </span>
+                    <h2 class="section-display-text font-display uppercase text-forest leading-none">
+                        JOURNAL
+                    </h2>
+                </div>
+                <div class="text-xs font-bold uppercase tracking-[0.3em] text-forest flex items-center gap-2 cursor-pointer hover:opacity-75 transition-opacity">
+                    View All Stories <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="reveal-element group cursor-pointer bg-cream/50 rounded-4xl p-5 border border-forest/10 hover:shadow-editorial transition-all">
+                    <div class="aspect-[16/10] rounded-[2rem] overflow-hidden mb-6 bg-olive">
+                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" 
+                             alt="Botanical Extraction" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/01472e/ccd5ae?text=Extraction+Methods'">
+                    </div>
+                    <span class="text-[9px] font-bold uppercase tracking-[0.25em] text-forest/60">OCTOBER 2026 / CRAFT</span>
+                    <h3 class="font-bold text-xl uppercase tracking-wider text-forest mt-2 mb-3 group-hover:text-opacity-70 transition-opacity">
+                        The Physics of Cold Bio-Fermentation
+                    </h3>
+                    <p class="text-xs text-forest/70 leading-relaxed font-normal">
+                        How temperature stability preserves delicate phytonutrients during lipid extraction.
+                    </p>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="reveal-element group cursor-pointer bg-cream/50 rounded-4xl p-5 border border-forest/10 hover:shadow-editorial transition-all">
+                    <div class="aspect-[16/10] rounded-[2rem] overflow-hidden mb-6 bg-olive">
+                        <img src="https://images.unsplash.com/photo-1470058869958-2a77ade41c02?auto=format&fit=crop&w=800&q=80" 
+                             alt="Forest Flora Harvesting" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/01472e/e9edc9?text=Wild+ARI GANTENG'">
+                    </div>
+                    <span class="text-[9px] font-bold uppercase tracking-[0.25em] text-forest/60">SEPTEMBER 2026 / ORIGINS</span>
+                    <h3 class="font-bold text-xl uppercase tracking-wider text-forest mt-2 mb-3 group-hover:text-opacity-70 transition-opacity">
+                        Wild Foraging in the Mediterranean Canopy
+                    </h3>
+                    <p class="text-xs text-forest/70 leading-relaxed font-normal">
+                        Exploring sustainable harvesting practices with local artisans across Andalusia.
+                    </p>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="reveal-element group cursor-pointer bg-cream/50 rounded-4xl p-5 border border-forest/10 hover:shadow-editorial transition-all">
+                    <div class="aspect-[16/10] rounded-[2rem] overflow-hidden mb-6 bg-olive">
+                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80" 
+                             alt="Minimalist Rituals" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/01472e/fefae0?text=Rituals'">
+                    </div>
+                    <span class="text-[9px] font-bold uppercase tracking-[0.25em] text-forest/60">AUGUST 2026 / RITUALS</span>
+                    <h3 class="font-bold text-xl uppercase tracking-wider text-forest mt-2 mb-3 group-hover:text-opacity-70 transition-opacity">
+                        Architectural Skincare: Less, but Elevated
+                    </h3>
+                    <p class="text-xs text-forest/70 leading-relaxed font-normal">
+                        Simplifying daily routines down to targeted, high-potency elemental layers.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-forest text-sage rounded-t-5xl -mt-16 pt-24 pb-12 px-4 md:px-12 z-50 relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- 12-Column Grid Footer Top -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-20 border-b border-sage/20">
+                
+                <!-- Left 6 Columns: Newsletter Signup -->
+                <div class="lg:col-span-6 reveal-element">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.35em] text-sage/70 block mb-4">
+                        JOIN THE BOTANICAL CLUB
+                    </span>
+                    <h3 class="font-display text-4xl md:text-5xl uppercase text-cream leading-tight mb-6">
+                        RECEIVE ARCHIVAL DISPATCHES & BATCH RELEASES.
+                    </h3>
+                    
+                    <form id="newsletter-form" class="mt-8">
+                        <div class="flex flex-col sm:flex-row items-stretch gap-4">
+                            <input type="email" 
+                                   required 
+                                   placeholder="ENTER YOUR EMAIL ADDRESS" 
+                                   class="underline-input flex-1 py-3 text-xs uppercase font-bold tracking-[0.2em] text-cream placeholder-sage/50">
+                            <button type="submit" 
+                                    class="px-8 py-3.5 bg-cream text-forest font-bold text-[10px] uppercase tracking-[0.3em] rounded-full hover:bg-sage transition-colors shadow-editorial">
+                                SUBSCRIBE
+                            </button>
+                        </div>
+                        <p id="newsletter-message" class="text-[10px] uppercase tracking-wider text-moss mt-3 hidden font-bold">
+                            ✓ Thank you for subscribing to Botanika archives.
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Right 6 Columns: Link Columns -->
+                <div class="lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-8 reveal-element">
+                    
+                    <!-- Column 1 -->
+                    <div>
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.35em] text-cream mb-6">EXPLORE</h4>
+                        <ul class="space-y-4 text-[11px] font-bold uppercase tracking-[0.25em] text-sage/80">
+                            <li><a href="#products" class="hover:text-cream transition-colors">Formulations</a></li>
+                            <li><a href="#philosophy" class="hover:text-cream transition-colors">Philosophy</a></li>
+                            <li><a href="#journal" class="hover:text-cream transition-colors">Archives</a></li>
+                            <li><a href="#" class="hover:text-cream transition-colors">Stockists</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div>
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.35em] text-cream mb-6">COMPANY</h4>
+                        <ul class="space-y-4 text-[11px] font-bold uppercase tracking-[0.25em] text-sage/80">
+                            <li><a href="#" class="hover:text-cream transition-colors">Provenance</a></li>
+                            <li><a href="#" class="hover:text-cream transition-colors">Sustainability</a></li>
+                            <li><a href="#" class="hover:text-cream transition-colors">Careers</a></li>
+                            <li><a href="#" class="hover:text-cream transition-colors">Press Kit</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3 -->
+                    <div class="col-span-2 sm:col-span-1">
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.35em] text-cream mb-6">SOCIAL</h4>
+                        <ul class="space-y-4 text-[11px] font-bold uppercase tracking-[0.25em] text-sage/80">
+                            <li><a href="#" class="hover:text-cream transition-colors">Instagram</a></li>
+                            <li><a href="#" class="hover:text-cream transition-colors">Pinterest</a></li>
+                            <li><a href="#" class="hover:text-cream transition-colors">Vimeo</a></li>
+                            <li><a href="#" class="hover:text-cream transition-colors">Spotify</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright & Legal Links -->
+            <div class="pt-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-bold uppercase tracking-[0.25em] opacity-40 text-sage">
+                <div>
+                    © 2026 - BOTANIKA EDITORIAL STUDIO. ALL RIGHTS RESERVED.
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:underline">PRIVACY POLICY</a>
+                    <a href="#" class="hover:underline">TERMS OF SERVICE</a>
+                    <a href="#" class="hover:underline">ACCESSIBILITY</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Cart Slide-over Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity duration-300">
+        <!-- Backdrop -->
+        <div id="cart-backdrop" class="absolute inset-0 bg-forest/40 backdrop-blur-sm"></div>
+        
+        <!-- Drawer Panel -->
+        <div id="cart-panel" class="absolute top-0 right-0 h-full w-full max-w-md bg-cream text-forest shadow-2xl translate-x-full transition-transform duration-500 ease-out p-6 flex flex-col justify-between pointer-events-auto border-l border-forest/10">
+            
+            <!-- Header -->
+            <div class="flex items-center justify-between pb-6 border-b border-forest/15">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <h3 class="font-bold text-lg uppercase tracking-widest">YOUR SELECTIONS</h3>
+                </div>
+                <button id="cart-close" class="p-2 hover:bg-forest/10 rounded-full transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Items List -->
+            <div id="cart-items" class="flex-1 overflow-y-auto py-6 space-y-4">
+                <!-- JS inserted items or empty state -->
+                <div id="cart-empty-state" class="text-center py-16">
+                    <i data-lucide="package-open" class="w-12 h-12 mx-auto text-forest/40 mb-3"></i>
+                    <p class="text-xs font-bold uppercase tracking-widest text-forest/60">YOUR BAG IS CURRENTLY EMPTY</p>
+                    <button id="start-shopping" class="mt-6 px-6 py-3 bg-forest text-cream text-[10px] font-bold uppercase tracking-[0.25em] rounded-full hover:bg-opacity-90">
+                        Explore Formulations
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cart Footer -->
+            <div class="pt-6 border-t border-forest/15 space-y-4">
+                <div class="flex justify-between items-center text-xs font-bold uppercase tracking-widest">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <p class="text-[9px] text-forest/60 uppercase tracking-wider">
+                    Complimentary carbon-neutral shipping & sample samples included with every batch.
+                </p>
+                <button id="checkout-btn" class="w-full py-4 bg-forest text-cream text-[11px] font-bold uppercase tracking-[0.3em] rounded-full hover:bg-opacity-90 transition-all shadow-editorial">
+                    Proceed to Checkout
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Search Overlay Modal -->
+    <div id="search-modal" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+        <div id="search-backdrop" class="absolute inset-0 bg-forest/60 backdrop-blur-md"></div>
+        <div class="relative z-10 w-full max-w-2xl bg-cream rounded-4xl p-8 shadow-editorial border border-forest/10 pointer-events-auto">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-forest/60">ARCHIVAL SEARCH</span>
+                <button id="search-close" class="p-2 hover:bg-forest/10 rounded-full text-forest">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="relative">
+                <input type="text" id="search-input" placeholder="SEARCH EXTRACTS, SERUMS, INGREDIENTS..." class="w-full py-4 bg-transparent border-b-2 border-forest text-lg font-bold uppercase tracking-wider text-forest placeholder-forest/40 focus:outline-none">
+                <i data-lucide="search" class="absolute right-0 top-4 w-6 h-6 text-forest/60"></i>
+            </div>
+            <div class="mt-6 text-[10px] font-bold uppercase tracking-[0.2em] text-forest/60 flex items-center gap-4">
+                <span>POPULAR:</span>
+                <span class="cursor-pointer underline hover:text-forest">SAGE LEAF</span>
+                <span class="cursor-pointer underline hover:text-forest">BARRIER BALM</span>
+                <span class="cursor-pointer underline hover:text-forest">MOSS EXTRACT</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Message Notification Box -->
+    <div id="notification-toast" class="fixed bottom-6 right-6 z-50 bg-forest text-cream px-6 py-4 rounded-full shadow-editorial translate-y-24 opacity-0 transition-all duration-500 flex items-center gap-3">
+        <i data-lucide="check-circle-2" class="w-5 h-5 text-sage"></i>
+        <span id="toast-message" class="text-[10px] font-bold uppercase tracking-[0.25em]">Item added to bag</span>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+            initStaggerLetters();
+            initScrollObserver();
+            initParallax();
+            initCartSystem();
+            initFilters();
+            initSearch();
+            initHeaderScroll();
+        });
+
+        /* --- Header Shrink on Scroll --- */
+        function initHeaderScroll() {
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('py-3', 'bg-sage/80', 'backdrop-blur-md', 'shadow-sm');
+                    header.classList.remove('py-5');
+                } else {
+                    header.classList.remove('py-3', 'bg-sage/80', 'backdrop-blur-md', 'shadow-sm');
+                    header.classList.add('py-5');
+                }
+            });
+        }
+
+        /* --- Hero Title Stagger Letter Reveal --- */
+        function initStaggerLetters() {
+            const letters = document.querySelectorAll('.stagger-letter');
+            letters.forEach((letter, idx) => {
+                setTimeout(() => {
+                    letter.classList.add('active');
+                }, 150 + idx * 60);
+            });
+        }
+
+        /* --- Scroll Triggered Reveal Logic with Custom Bezier --- */
+        function initScrollObserver() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -80px 0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-element').forEach(el => observer.observe(el));
+        }
+
+        /* --- Parallax Scroll for Floating Elements --- */
+        function initParallax() {
+            const floatingCards = document.querySelectorAll('.parallax-floating');
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                floatingCards.forEach(card => {
+                    const speed = parseFloat(card.getAttribute('data-speed')) || 0.05;
+                    const yPos = -(scrolled * speed);
+                    card.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                });
+            });
+        }
+
+        /* --- Category Filter Logic --- */
+        function initFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Active state button styling
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-forest', 'text-cream');
+                        b.classList.add('bg-cream/60', 'text-forest');
+                    });
+                    btn.classList.remove('bg-cream/60', 'text-forest');
+                    btn.classList.add('bg-forest', 'text-cream');
+
+                    const category = btn.getAttribute('data-category');
+
+                    productCards.forEach(card => {
+                        const cardCat = card.getAttribute('data-category');
+                        if (category === 'all' || cardCat === category) {
+                            card.style.display = 'block';
+                            setTimeout(() => card.classList.add('active'), 50);
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        /* --- Cart State & Drawer Logic --- */
+        let cart = [];
+
+        function initCartSystem() {
+            const cartToggle = document.getElementById('cart-toggle');
+            const cartDrawer = document.getElementById('cart-drawer');
+            const cartPanel = document.getElementById('cart-panel');
+            const cartBackdrop = document.getElementById('cart-backdrop');
+            const cartClose = document.getElementById('cart-close');
+            const startShopping = document.getElementById('start-shopping');
+
+            function openCart() {
+                cartDrawer.classList.remove('pointer-events-none', 'opacity-0');
+                cartDrawer.classList.add('opacity-100');
+                cartPanel.classList.remove('translate-x-full');
+            }
+
+            function closeCart() {
+                cartPanel.classList.add('translate-x-full');
+                cartDrawer.classList.remove('opacity-100');
+                cartDrawer.classList.add('pointer-events-none', 'opacity-0');
+            }
+
+            cartToggle.addEventListener('click', openCart);
+            cartClose.addEventListener('click', closeCart);
+            cartBackdrop.addEventListener('click', closeCart);
+            if (startShopping) {
+                startShopping.addEventListener('click', () => {
+                    closeCart();
+                    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            // Quick Add Event Listeners
+            document.querySelectorAll('.quick-add-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const card = btn.closest('.product-card');
+                    const id = card.getAttribute('data-id');
+                    const name = card.getAttribute('data-name');
+                    const price = parseFloat(card.getAttribute('data-price'));
+                    const img = card.getAttribute('data-img');
+
+                    addToCart(id, name, price, img);
+                    showToast(`Added ${name} to bag`);
+                });
+            });
+
+            // Newsletter form submit
+            const newsletterForm = document.getElementById('newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    document.getElementById('newsletter-message').classList.remove('hidden');
+                    newsletterForm.querySelector('input').value = '';
+                });
+            }
+        }
+
+        function addToCart(id, name, price, img) {
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ id, name, price, img, quantity: 1 });
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartSubtotal = document.getElementById('cart-subtotal');
+            const emptyState = document.getElementById('cart-empty-state');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalCost = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            cartCount.textContent = totalCount;
+            cartSubtotal.textContent = `$${totalCost.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div id="cart-empty-state" class="text-center py-16">
+                        <i data-lucide="package-open" class="w-12 h-12 mx-auto text-forest/40 mb-3"></i>
+                        <p class="text-xs font-bold uppercase tracking-widest text-forest/60">YOUR BAG IS CURRENTLY EMPTY</p>
+                        <button onclick="document.getElementById('cart-close').click(); document.getElementById('products').scrollIntoView({ behavior: 'smooth' });" class="mt-6 px-6 py-3 bg-forest text-cream text-[10px] font-bold uppercase tracking-[0.25em] rounded-full hover:bg-opacity-90">
+                            Explore Formulations
+                        </button>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="flex items-center gap-4 bg-sage/30 p-3 rounded-2xl border border-forest/10">
+                    <img src="${item.img}" alt="${item.name}" class="w-16 h-20 object-cover rounded-xl bg-sage/50">
+                    <div class="flex-1">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-forest">${item.name}</h4>
+                        <span class="text-xs font-extrabold text-forest/80">$${item.price}</span>
+                        <div class="flex items-center gap-2 mt-2 text-[10px] font-bold">
+                            <span class="text-forest/60">QTY: ${item.quantity}</span>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart('${item.id}')" class="p-2 hover:text-red-700 text-forest/60 transition-colors">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        /* --- Search Modal Logic --- */
+        function initSearch() {
+            const searchToggle = document.getElementById('search-toggle');
+            const searchModal = document.getElementById('search-modal');
+            const searchBackdrop = document.getElementById('search-backdrop');
+            const searchClose = document.getElementById('search-close');
+            const searchInput = document.getElementById('search-input');
+
+            function openSearch() {
+                searchModal.classList.remove('pointer-events-none', 'opacity-0');
+                searchModal.classList.add('opacity-100');
+                setTimeout(() => searchInput.focus(), 100);
+            }
+
+            function closeSearch() {
+                searchModal.classList.remove('opacity-100');
+                searchModal.classList.add('pointer-events-none', 'opacity-0');
+            }
+
+            searchToggle.addEventListener('click', openSearch);
+            searchClose.addEventListener('click', closeSearch);
+            searchBackdrop.addEventListener('click', closeSearch);
+        }
+
+        /* --- Toast Notification Handler --- */
+        function showToast(message) {
+            const toast = document.getElementById('notification-toast');
+            const toastMsg = document.getElementById('toast-message');
+
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
